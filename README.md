@@ -1,59 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tres 360 — Landing web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Landing page de presentación para **Tres Sesenta (360)**, la marca de *property management*
+de **METRIKA SA**. Una sola página, un formulario de contacto de tres campos con backend en
+Laravel, y un globo flotante de WhatsApp. El detalle completo del alcance, el sistema de
+diseño y las decisiones técnicas está en `LEGAJO-TECNICO.md`, `CLAUDE.md` y `PLAN.md`.
 
-## About Laravel
+## Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel 12 · PHP 8.3+ · Blade · Tailwind CSS v4 (Vite) · Alpine.js · MySQL 8 · fuentes
+Nunito e Inter autohospedadas vía `@fontsource`. Cero dependencias de terceros en runtime.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Puesta en marcha local
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+# crear la base de datos indicada en DB_DATABASE (MySQL 8)
+php artisan migrate
+npm install
+npm run build   # o `npm run dev` durante desarrollo
+php artisan serve
+```
 
-## Learning Laravel
+## Tests
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+php artisan test
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Suite Pest sobre la home y el formulario de leads: validación, persistencia, notificación
+por correo (`Mail::fake()`), honeypot, timestamp firmado y rate limit.
 
-## Laravel Sponsors
+## Despliegue en Plesk
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. `npm run build` en local y subir `public/build/` — el Plesk no compila assets.
+2. Document root del dominio apuntando a `public/`.
+3. `.env` de producción: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL` con https,
+   credenciales de MySQL y del SMTP de webparaguay.
+4. `php artisan key:generate --force`, `migrate --force`, y luego `config:cache`,
+   `route:cache`, `view:cache`.
+5. Permisos de escritura en `storage/` y `bootstrap/cache/`.
+6. SSL (Let's Encrypt) con redirección forzada a https.
+7. Probar un envío real del formulario y confirmar que el correo llega a
+   `milena@tres60.com.py` antes de dar el despliegue por cerrado.
 
-### Premium Partners
+## Datos pendientes de confirmar con el cliente
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ver `CLAUDE.md §10`. Los dos que bloquean publicación: la ciudad exacta de la dirección
+(hoy "Asunción, Paraguay") y el dominio definitivo.
