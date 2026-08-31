@@ -3,9 +3,9 @@
 return [
     'empresa' => 'Tres Sesenta',
     'legal' => 'METRIKA SA',
-    'telefono' => '(0975) 560037',
-    'tel_e164' => '+595975560037',
-    'whatsapp' => '595975560037',
+    'telefono' => '(0972) 620300',
+    'tel_e164' => '+595972620300',
+    'whatsapp' => '595972620300',
     'email' => 'milena@tres60.com.py',
     'direccion' => 'Lisiados del Chaco c/ Cadete Pando, Barrio Defensores del Chaco',
     'ciudad' => 'Ciudad del Este, Paraguay',
