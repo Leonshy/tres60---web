@@ -19,10 +19,6 @@
                 <img src="{{ asset('img/logo-tres360-blanco.png') }}" alt="{{ config('tres360.empresa') }}" width="180" height="38" class="h-8 w-auto md:h-9">
             </a>
 
-            <nav class="hidden items-center gap-8 text-sm font-medium text-ink-on-dark md:flex">
-                <a href="#contacto" class="transition hover:text-white">Contacto</a>
-            </nav>
-
             <div class="hidden md:block">
                 <x-boton variante="primario" href="https://wa.me/{{ config('tres360.whatsapp') }}?text={{ urlencode(config('tres360.wa_texto')) }}" class="!px-5 !py-2.5 text-sm" target="_blank" rel="noopener">
                     Hablar con un asesor
@@ -49,8 +45,7 @@
         class="fixed inset-0 z-40 bg-ink-deep/95 p-6 md:hidden"
     >
         <div class="mt-20 flex flex-col gap-4 text-lg font-medium text-white">
-            <a href="#contacto" @click="open = false" class="rounded-xl border border-white/10 px-4 py-3">Contacto</a>
-            <x-boton variante="primario" href="https://wa.me/{{ config('tres360.whatsapp') }}?text={{ urlencode(config('tres360.wa_texto')) }}" target="_blank" rel="noopener" class="mt-3 justify-center">
+            <x-boton variante="primario" href="https://wa.me/{{ config('tres360.whatsapp') }}?text={{ urlencode(config('tres360.wa_texto')) }}" target="_blank" rel="noopener" class="justify-center">
                 Hablar con un asesor
             </x-boton>
         </div>
