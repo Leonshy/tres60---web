@@ -10,14 +10,14 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ config('tres360.empresa') }} — Administración integral de departamentos">
-    <meta property="og:description" content="Property management de principio a fin para propietarios de departamentos en Asunción. Una marca de METRIKA SA.">
+    <meta property="og:description" content="Property management de principio a fin para propietarios de departamentos en {{ config('tres360.ciudad') }}. Una marca de METRIKA SA.">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:image" content="{{ asset('img/og-image.png') }}">
     <meta property="og:locale" content="es_PY">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ config('tres360.empresa') }} — Administración integral de departamentos">
-    <meta name="twitter:description" content="Property management de principio a fin para propietarios de departamentos en Asunción. Una marca de METRIKA SA.">
+    <meta name="twitter:description" content="Property management de principio a fin para propietarios de departamentos en {{ config('tres360.ciudad') }}. Una marca de METRIKA SA.">
     <meta name="twitter:image" content="{{ asset('img/og-image.png') }}">
 
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
