@@ -19,9 +19,7 @@
                 <img src="{{ asset('img/logo-tres360-blanco.png') }}" alt="{{ config('tres360.empresa') }}" width="180" height="38" class="h-8 w-auto md:h-9">
             </a>
 
-            <nav class="hidden items-center gap-8 text-sm font-medium text-ink-onDark md:flex">
-                <a href="#beneficios" class="transition hover:text-white">Beneficios</a>
-                <a href="#servicio" class="transition hover:text-white">Servicio</a>
+            <nav class="hidden items-center gap-8 text-sm font-medium text-ink-on-dark md:flex">
                 <a href="#contacto" class="transition hover:text-white">Contacto</a>
             </nav>
 
@@ -51,8 +49,6 @@
         class="fixed inset-0 z-40 bg-ink-deep/95 p-6 md:hidden"
     >
         <div class="mt-20 flex flex-col gap-4 text-lg font-medium text-white">
-            <a href="#beneficios" @click="open = false" class="rounded-xl border border-white/10 px-4 py-3">Beneficios</a>
-            <a href="#servicio" @click="open = false" class="rounded-xl border border-white/10 px-4 py-3">Servicio</a>
             <a href="#contacto" @click="open = false" class="rounded-xl border border-white/10 px-4 py-3">Contacto</a>
             <x-boton variante="primario" href="https://wa.me/{{ config('tres360.whatsapp') }}?text={{ urlencode(config('tres360.wa_texto')) }}" target="_blank" rel="noopener" class="mt-3 justify-center">
                 Hablar con un asesor
